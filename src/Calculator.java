@@ -4,18 +4,18 @@ public class Calculator {
     static Scanner scanner = new Scanner(System.in);
 
     public static void launch() {
-        int firstNumber = getNumber();
-        int secondNumber = getNumber();
+        double firstNumber = getNumber();
+        double secondNumber = getNumber();
         char operation = getOperation();
-        int result = calc(firstNumber, secondNumber, operation);
+        double result = calc(firstNumber, secondNumber, operation);
         System.out.println("Result: " + result);
         scanner.close();
     }
 
-    public static int getNumber() {
+    public static double getNumber() {
         System.out.println("Enter the number:");
-        int number;
-        number = scanner.nextInt();
+        double number;
+        number = scanner.nextDouble();
         return number;
     }
 
@@ -26,8 +26,8 @@ public class Calculator {
         return operation;
     }
 
-    public static int calc(int firstNumber, int secondNumber, char operation) {
-        int result;
+    public static double calc(double firstNumber, double secondNumber, char operation) {
+        double result;
         switch (operation) {
             case '+':
                 result = firstNumber + secondNumber;
@@ -39,6 +39,11 @@ public class Calculator {
                 result = firstNumber * secondNumber;
                 break;
             case '/':
+                if (secondNumber==0) {
+                    System.out.println("Error");
+                    result = 0;
+                    break;
+                }
                 result = firstNumber / secondNumber;
                 break;
             default:
